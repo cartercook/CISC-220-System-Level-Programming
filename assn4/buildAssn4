@@ -1,0 +1,3 @@
+#!/bin/bash
+#by 13cjcc for CISC 220F assignment 4
+gcc -o assn4 ./assn4.c ./readMarks.c ./statistics.c ./histogram.c -lm

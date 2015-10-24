@@ -1,0 +1,6 @@
+#!/bin/bash
+#by 13cjcc 10105975 and 12twgf 10100731
+chmod u+x ./*x*x*
+chmod g=rw o= ./* #g gets rw (but no x) permissions and o gets nothing, for all files in the current directory
+chmod o+r ./[ab]*
+chmod o+x ./*[de]

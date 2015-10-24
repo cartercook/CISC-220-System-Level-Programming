@@ -1,0 +1,7 @@
+#!/bin/bash
+#by 13cjcc 10105975 and 12twgf 10100731
+name=$1
+species=$2
+price=$3
+echo My $species\'s name is $name.
+echo I paid \$$price for $name.

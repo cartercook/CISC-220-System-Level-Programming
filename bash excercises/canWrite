@@ -1,0 +1,12 @@
+#!/bin/bash
+if [[ -e $1 ]]
+then
+	echo It Exists!!
+fi
+if [[ -w $1 ]]
+then
+	echo It\'s Writeable!!!
+elif [[ ! -w $1 ]]
+then
+    echo It\'s Unwriteable!!!!!!!!
+fi

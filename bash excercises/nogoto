@@ -1,0 +1,3 @@
+#!/bin/bash
+#by 13cjcc and 12twgf
+grep -wl goto $(find . -name '*\.c' )

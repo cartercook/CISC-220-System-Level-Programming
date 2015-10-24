@@ -1,0 +1,5 @@
+#!/bin/bash
+#by 13cjcc 10105975 and 12twgf 10100731
+directory=$1
+ls $directory | /cas/course/cisc220/linenums > ~/listing
+echo listing has been copied to the home drive.

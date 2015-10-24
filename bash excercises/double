@@ -1,0 +1,3 @@
+#!/bin/bash
+math=$1
+echo $(( 1 * 5 ))

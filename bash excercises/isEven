@@ -1,0 +1,9 @@
+#!/bin/bash
+num=$1
+((num%=2))
+if ((num == 0))
+then
+	echo yes
+else
+	echo no
+fi

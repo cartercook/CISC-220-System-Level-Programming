@@ -1,0 +1,5 @@
+#!/bin/bash
+#by 13cjcc for CISC220F assignment 4
+gcc -c -DDEBUG ./assn4.c ./readMarks.c ./statistics.c ./histogram.c
+gcc -o assn4Debug ./assn4.o ./readMarks.o ./statistics.o ./histogram.o -lm
+rm ./assn4.o ./readMarks.o ./statistics.o ./histogram.o #cleanup

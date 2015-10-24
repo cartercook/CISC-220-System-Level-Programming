@@ -1,0 +1,9 @@
+# does a complete build of the assn5 program
+# Provided for Assignment 5
+# CISC 220, Fall 2014
+
+rm -f *.o
+gcc -c -Wall assn5Testing.c
+gcc -c -Wall heapReport.c
+gcc -c -Wall assn5Functions.c
+gcc -o assn5 assn5Testing.o heapReport.o assn5Functions.o 

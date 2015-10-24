@@ -1,0 +1,4 @@
+#by 13cjcc 10105975 and 12twgf 10100731
+#!/bin/bash
+file=$1
+cat $file | /cas/course/cisc220/linenums

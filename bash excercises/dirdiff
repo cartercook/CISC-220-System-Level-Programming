@@ -1,0 +1,59 @@
+#!/bin/bash
+#Code by 13cjcc (10105975) and 12twgf (10100731)
+dir1=$1
+dir2=$2
+if [[ $# != 2 ]] #reject faulty arguments
+then
+    echo "ERROR: requires exactly 2 arguments" >&2
+    exit 1
+elif ! [[ -d $dir1 && -r $dir1 && -d $dir2 && -r $dir2 ]]
+then
+    echo "ERROR: both files must be readable directories" >&2
+    exit 1
+else
+    > diffReport.txt #clears diffReport. Blank slate.
+
+    for FILE1 in $dir1/* #compare basenames of every file in dir1 with that of dir2 
+    do
+	MATCH=false #turns true if match is found
+	for FILE2 in $dir2/*
+        do
+	    if [[ $(basename $FILE1) == $(basename $FILE2) ]]
+	    then
+		MATCH=true
+		diff $FILE1 $FILE2 >| diffTemp2 #drop output into temporary file, for the sake of order
+		EXITSTATUS=$?
+		if (($EXITSTATUS != 0))
+		then
+		    echo -e "differences found between" $FILE1 "and" $FILE2 "\b:" >> diffTemp1
+		fi
+		cat diffTemp2 >> diffTemp1
+	    fi
+	done
+	if [[ $MATCH == false ]]
+	then #echo directly into diffReport.txt, because we want this printed first
+	    echo $(basename $FILE1) "exists in" $dir1 "but not in" $dir2 >> diffReport.txt
+	fi
+    done
+
+    for FILE2 in $dir2/* #a copy of our first nested loop, but for each item in dir2 instead of dir1.
+    do
+        MATCH=false
+        for FILE1 in $dir1/*
+        do
+            if [[ $(basename $FILE2) == $(basename $FILE1) ]]
+            then
+                MATCH=true
+		#all identical files were found the first time around. No need to recheck.
+            fi
+        done
+        if [[ $MATCH == false ]]
+        then
+            echo $(basename $FILE2) "exists in" $dir2 "but not in" $dir1 >> diffReport.txt
+        fi
+    done
+
+    cat diffTemp1 >> diffReport.txt #append diff's output(s) at the bottom of the report
+    rm diffTemp1 diffTemp2 #destroy the evidence!!
+    exit 0 #success
+fi
